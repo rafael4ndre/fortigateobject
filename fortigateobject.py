@@ -17,14 +17,15 @@ length = len(sys.argv)
 if length<2:
 	print("######")
 	print("Please, pass the IP file as an agurment:")
-	print("USAGE: fortigateobject.py <IP file>")
+	print("USAGE: fortigateobject.py <IP file> <object-name>")
 	print("######")
 else:
 	with open(sys.argv[1]) as myfile:
 		count=0
+		objectname=sys.argv[2]
 		print("config firewall address")
 		for line in myfile:
-			name="block_"+line
+			name=objectname + "_" + line
 			print("edit", name, sep=' ', end='')
 			object=line.rstrip("\n")
 			print("set subnet", object, "255.255.255.255", sep=' ')
